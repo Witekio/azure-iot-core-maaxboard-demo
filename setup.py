@@ -17,10 +17,9 @@ PIN_NUMBER = input(f'Please enter one of these pin numbers for the GPIO you woul
 
 if PIN_NUMBER not in MAPPINGS.keys():
     print('Your *pin* number is not found, can you make sure you are using the PIN number not the GPIO?')
-    break
 
 if PIN_NUMBER in MAPPINGS.keys():
-    SYS_CLASS_NUMBER = MAPPINGS[PIN_NUMBER]
+    SYS_CLASS_NUMBER = MAPPINGS[PIN_NUMBER]['gpio_reference']
     print(f'Your pin number is {PIN_NUMBER}.\nThis corresponds to sys class number {SYS_CLASS_NUMBER}. Configuring this now.')
     os.system(f'echo {SYS_CLASS_NUMBER} > /sys/class/gpio/export')
     os.system(f'echo out > /sys/class/gpio/gpio{SYS_CLASS_NUMBER}/direction')
