@@ -29,6 +29,7 @@ if PIN_NUMBER in MAPPINGS.keys():
         REQUEST = input('Enter ON, OFF, or CLEAR: ')
         if REQUEST == 'CLEAR':
             os.system(f'echo {SYS_CLASS_NUMBER} > /sys/class/gpio/unexport')
+            break
         if REQUEST == 'OFF': 
             os.system(f'echo 0 > /sys/class/gpio/gpio{SYS_CLASS_NUMBER}/value')
         if REQUEST == 'ON':
