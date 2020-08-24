@@ -34,7 +34,8 @@ class Pin:
         self.sys_pin_number = MAPPINGS[self.pin_number]
         print(f'Your pin number is {self.pin_number}.\n')
         print(f'Your system gpio number is {self.sys_pin_number}.\n')
-        
+        self.configure()
+
     def turn_on(self):
         os.system(f'echo 1 > /sys/class/gpio/gpio{self.sys_pin_number}/value')
 
