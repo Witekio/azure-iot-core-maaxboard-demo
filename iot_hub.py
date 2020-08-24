@@ -4,7 +4,7 @@ from pin import Pin
 from azure.iot.device import IoTHubDeviceClient
 
 conn_str = os.getenv("IOTHUB_DEVICE_CONNECTION_STRING")
-device_client = IoTHubDeviceClient.create_from_connection_string(STRING)
+device_client = IoTHubDeviceClient.create_from_connection_string(conn_str)
 
 PIN_NUMBER = '11' # REPLACE WITH YOUR PIN NUMBER if different
 configured_pin = Pin(PIN_NUMBER)
