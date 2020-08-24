@@ -21,8 +21,9 @@ print("{}".format(twin))
 def report_light_state(state):
     reported_properties = {"light": state}
     light_state = reported_properties["light"]
-    print("Setting reported light state to {light_state}"
+    print(f"Setting reported light state to {light_state}")
     device_client.patch_twin_reported_properties(reported_properties)
+
 
 # Initalize the light as off in reported properties:
 report_light_state("OFF")
