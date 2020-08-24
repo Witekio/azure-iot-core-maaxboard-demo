@@ -30,13 +30,13 @@ report_light_state("OFF")
 while True:
     request = input('Enter ON, OFF, or CLEAR: ')
     if request == "CLEAR":
-        pin.tear_down()
+        configured_pin.tear_down()
         report_light_state("OFF")
         device_client.disconnect()
         break
     if request == "OFF":
-        pin.turn_off()
+        configured_pin.turn_off()
         report_light_state("OFF")
     if request == "ON":
-        pin.turn_on()
+        configured_pin.turn_on()
         report_light_state("ON")
