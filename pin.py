@@ -1,17 +1,20 @@
 import os
 
-# The sys GPIO references are obtained from: https://www.element14.com/community/groups/roadtest/blog/2020/04/20/maaxboard-roadtest-direct-gpio
-# You can also directly calculate these by referencing the Pin configuration on page 22 here:
+# The sys GPIO references are obtained from:
+# https://www.element14.com/community/groups/roadtest/blog/2020/04/20/maaxboard-roadtest-direct-gpio
+# You can also directly calculate these by referencing the Pin configuration on
+# page 22 here:
 # https://www.avnet.com/opasdata/d120001/medias/docus/197/AES-MC-SBC-IMX8M-G-Hardware_UserManual-V1.0-EN.pdf?CMP=GL-Avnet-E14-cross-sell
-# Then running it through this formula: 
+# Then running it through this formula:
 # (x-1) * 32 + y
-# Where x is the number right after GPIO in the "Signal Description" and y is the pin number. 
+# Where x is the number right after GPIO in the "Signal Description"
+# and y is the pin number.
 # For example, for Pin 7 we have a Signal Description of GPIO3_IO16
 # To calculate the pin number we then have this when we plug the values into our formula:
 # (3 - 1) * 32 + 16 = 80
 # And another example for GPIO 11:
 # We start with the signal description of GPIO3_IO17
-# (x-1) * 32 + y 
+# (x-1) * 32 + y
 # (3-1) * 32 + 17 = 81
 # I've listed the mappings for these calculations below for common GPIOs
 MAPPINGS = {
@@ -48,4 +51,3 @@ class Pin:
 
     def tear_down(self):
         os.system(f'echo {self.sys_pin_number} > /sys/class/gpio/unexport')
-   
