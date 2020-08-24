@@ -40,7 +40,7 @@ while True:
     if request == "ON":
         configured_pin.turn_on()
         report_light_state("ON")
-    if REQUEST == 'LISTEN':
+    if request == 'LISTEN':
         while True:
             twin = device_client.get_twin()
             if not twin['desired'].get('light'):
