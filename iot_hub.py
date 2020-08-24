@@ -28,7 +28,7 @@ report_light_state("OFF")
 
 
 while True:
-    request = input('Enter ON, OFF, or CLEAR: ')
+    request = input('Enter ON, OFF, LISTEN, or CLEAR: ')
     if request == "CLEAR":
         configured_pin.tear_down()
         report_light_state("OFF")
