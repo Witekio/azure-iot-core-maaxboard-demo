@@ -42,9 +42,9 @@ class Pin:
         os.system(f'echo 0 > /sys/class/gpio/gpio{self.sys_pin_number}/value')
 
     def configure(self):
-        os.system(f'echo {sys_pin_number} > /sys/class/gpio/export')
-        os.system(f'echo out > /sys/class/gpio/gpio{sys_pin_number}/direction')
+        os.system(f'echo {self.sys_pin_number} > /sys/class/gpio/export')
+        os.system(f'echo out > /sys/class/gpio/gpio{self.sys_pin_number}/direction')
 
     def tear_down(self):
-        os.system(f'echo {sys_pin_number} > /sys/class/gpio/unexport')
+        os.system(f'echo {self.sys_pin_number} > /sys/class/gpio/unexport')
    

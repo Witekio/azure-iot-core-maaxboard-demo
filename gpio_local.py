@@ -1,5 +1,5 @@
 import os
-from pin import Pin
+from pin import Pin, MAPPINGS
 
 PIN_NUMBER = input(f'Please enter one of these pin numbers for the GPIO you would like to use: {list(MAPPINGS.keys())}')
 
