@@ -41,15 +41,20 @@ while True:
         configured_pin.turn_on()
         report_light_state("ON")
     if request == 'LISTEN':
+        last_desired_light_state = ''
         while True:
             twin = device_client.get_twin()
             if not twin['desired'].get('light'):
                 print('No desired light property set')
                 break
             desired_light_state = twin['desired']['light']
-            if desired_light_state == 'OFF':
-                configured_pin.turn_off()
-            if desired_light_state == 'ON':
-                configured_pin.turn_on()
-            report_light_state(desired_light_state)
+            if last_desired_light_state != desired_light_state:
+                if desired_light_state == 'OFF':
+                    configured_pin.turn_off()
+                    report_light_state(desired_light_state)
+                if desired_light_state == 'ON':
+                    configured_pin.turn_on()
+                    report_light_state(desired_light_state)
+            else:
+                print('No update to desired light state detected')
             time.sleep(3)
