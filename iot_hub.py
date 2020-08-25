@@ -2,7 +2,7 @@
 
 import os
 import time
-from pin import Pin, MAPPINGSm prompt_for_pin_number
+from pin import Pin, prompt_for_pin_number
 from azure.iot.device import IoTHubDeviceClient
 
 conn_str = os.getenv("IOTHUB_DEVICE_CONNECTION_STRING")
