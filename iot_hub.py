@@ -6,7 +6,10 @@ from azure.iot.device import IoTHubDeviceClient
 conn_str = os.getenv("IOTHUB_DEVICE_CONNECTION_STRING")
 device_client = IoTHubDeviceClient.create_from_connection_string(conn_str)
 
-PIN_NUMBER = '11'  # REPLACE WITH YOUR PIN NUMBER if different
+PIN_NUMBER = input(
+    'Please enter one of these pin numbers for the GPIO '
+    f'you would like to use: {list(MAPPINGS.keys())}'
+)
 configured_pin = Pin(PIN_NUMBER)
 
 # Connect the IoTHub client
