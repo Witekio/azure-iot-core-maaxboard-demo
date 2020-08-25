@@ -13,7 +13,6 @@ if PIN_NUMBER not in MAPPINGS.keys():
 
 if PIN_NUMBER in MAPPINGS.keys():
     pin = Pin(PIN_NUMBER)
-    pin.configure()
     print(
         'Please enter ON or OFF to turn the pin on or off. '
         'When finished, enter CLEAR to clear the pin.'
