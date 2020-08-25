@@ -1,28 +1,20 @@
-from pin import Pin, MAPPINGS
+#!/usr/bin/env python3
 
-PIN_NUMBER = input(
-    'Please enter one of these pin numbers for the GPIO '
-    f'you would like to use: {list(MAPPINGS.keys())}'
-)
+from pin import Pin, MAPPINGS, prompt_for_pin_number
 
-if PIN_NUMBER not in MAPPINGS.keys():
+
+if __name__ == "__main__":
+    pin_number = prompt_for_pin_number()
+    pin = Pin(pin_number)
     print(
-        'Your *pin* number is not found, can you make sure '
-        'you are using the PIN number not the GPIO?'
-    )
-
-if PIN_NUMBER in MAPPINGS.keys():
-    pin = Pin(PIN_NUMBER)
-    print(
-        'Please enter ON or OFF to turn the pin on or off. '
-        'When finished, enter CLEAR to clear the pin.'
+        'Please enter ON or OFF to turn the pin on or off.'
     )
     while True:
-        REQUEST = input('Enter ON, OFF, or CLEAR: ')
-        if REQUEST == 'CLEAR':
+        try: 
+            REQUEST = input('Enter ON or OFF:')
+            if REQUEST == 'OFF':
+                pin.turn_off()
+            if REQUEST == 'ON':
+                pin.turn_on()
+        finally:
             pin.tear_down()
-            break
-        if REQUEST == 'OFF':
-            pin.turn_off()
-        if REQUEST == 'ON':
-            pin.turn_on()

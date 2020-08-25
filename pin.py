@@ -31,6 +31,10 @@ MAPPINGS = {
 }
 
 
+# These are only expected to work on a Avnet MaaXBoard and the Debian 
+# MaaXBoard-LinuxShipmentImage-Debian-V1.1.1r10.img image file 
+# Obtained from the reference designs section here:
+# https://www.element14.com/community/community/designcenter/single-board-computers/maaxboard  
 class Pin:
     def __init__(self, pin_number):
         self.pin_number = str(pin_number)
@@ -51,3 +55,21 @@ class Pin:
 
     def tear_down(self):
         os.system(f'echo {self.sys_pin_number} > /sys/class/gpio/unexport')
+
+
+
+def prompt_for_pin_number():
+    good_pin_number = False
+    while good_pin_number == False:
+        pin_number = input(
+            'Please enter one of these pin numbers for the GPIO '
+            f'you would like to use: {list(MAPPINGS.keys())}'
+        )
+        if pin_number not in MAPPINGS.keys():
+            print(
+                'Your *pin* number is not found, can you make sure '
+                'you are using the PIN number not the GPIO?'
+            )
+        if pin_number in MAPPINGS.keys():
+            good_pin_number = True
+    return pin_number
