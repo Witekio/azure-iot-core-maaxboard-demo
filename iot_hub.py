@@ -54,7 +54,7 @@ if __name__ == "__main__":
         pin_number = prompt_for_pin_number()
         configured_pin = Pin(pin_number)
         while True:
-            request = input('Enter ON, OFF, or LISTEN')
+            request = input('Enter ON, OFF, or LISTEN: ')
             if request == "OFF":
                 configured_pin.turn_off()
                 report_light_state("OFF", device_client)
@@ -62,7 +62,7 @@ if __name__ == "__main__":
                 configured_pin.turn_on()
                 report_light_state("ON", device_client)
             if request == 'LISTEN':
-                listen()
+                listen(device_client, configured_pin)
     finally:
         configured_pin.tear_down()
         report_light_state("OFF", device_client)
