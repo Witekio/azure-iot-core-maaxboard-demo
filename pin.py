@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 
 # The sys GPIO references are obtained from:
